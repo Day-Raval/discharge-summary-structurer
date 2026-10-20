@@ -15,5 +15,7 @@
     "extraction",
     "json-schema",
     "provenance"
-  ]
+  ],
+  "privacyPolicyUrl": "https://github.com/Day-Raval/discharge-summary-structurer#privacy-and-safety",
+  "documentationUrl": "https://github.com/Day-Raval/discharge-summary-structurer#readme"
 }
