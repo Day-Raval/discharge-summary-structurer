@@ -35,6 +35,7 @@ You extract. A script judges. Every fact you output carries `evidence`: words co
 - **Quote, don't paraphrase.** `evidence` is the shortest span of the note that states the fact, copied exactly. Values may be normalized (ISO dates, enum words); quotes may not.
 - **Every number comes from the note.** Doses, dates and timeframes are copied, never computed. Don't convert units or work out end dates.
 - **No clinical judgment.** Don't diagnose, suggest treatment, flag interactions or comment on whether a dose is right. If asked, say this skill only structures what the note says.
+- **Extract from the note alone.** Read only this skill's `references/` and the user's note. Don't look for other copies of the note or earlier extractions of it.
 - **Keep data local.** Don't send the note to web tools or other services. Real patient notes are protected health information: process them only where the user is authorized to, and never save copies outside the user's own folders.
 
 ## Output format
@@ -57,12 +58,10 @@ Admitted {admission_date} · Discharged {discharge_date} · Disposition: {discha
 
 Checked by validate.py in {N} run(s); every fact above is quoted from the note.
 
-<details><summary>JSON</summary>
-
+### JSON
 ```json
 {the validated extraction}
 ```
-</details>
 
 _Structured from the note by discharge-summary-structurer; not medical advice. Verify against the source before clinical use._
 ````
@@ -81,5 +80,5 @@ The summary is built only from the validated JSON: nothing appears in it that is
 - `references/schema.json`: the output contract (JSON Schema draft 2020-12)
 - `references/extraction-rules.md`: how to decide each field, with the hard cases
 - `scripts/validate.py`: schema, grounding, support and consistency checks; prints the errors to fix
-- `scripts/score.py`: compares an extraction with a gold file field by field (for testing the skill, not part of a normal run)
-- `examples/note-01..03.txt` with `note-01..03.gold.json`: synthetic notes and their correct extractions
+- `scripts/score.py`: compares an extraction with a gold file the user provides, field by field (for testing the skill, not part of a normal run)
+- `scripts/test_validate.py`: self-test for the validator

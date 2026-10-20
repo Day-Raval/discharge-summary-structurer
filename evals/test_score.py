@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Check score.py counts matches and mistakes correctly. Run: python3 scripts/test_score.py"""
+"""Check score.py counts matches and mistakes correctly. Run from the repo root: python3 evals/test_score.py"""
 import contextlib, copy, io, json, sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent / "skills" / "discharge-summary-structurer" / "scripts"))
 import score  # noqa: E402
 
-EX = HERE.parent / "examples"
+EX = HERE / "notes"
 GOLD = {i: json.loads((EX / f"note-0{i}.gold.json").read_text(encoding="utf-8")) for i in (1, 2, 3)}
 
 

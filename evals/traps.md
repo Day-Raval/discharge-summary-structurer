@@ -1,6 +1,7 @@
 # Planted traps in the synthetic notes
 
-Each note in `skills/discharge-summary-structurer/examples/` has a hand-made gold extraction (`note-0N.gold.json`).
+Each note in `evals/notes/` has a hand-made gold extraction (`note-0N.gold.json`).
+The notes and gold files live outside the skill folder on purpose: the model must never see the answers while it extracts.
 These are the traps the gold files answer. `validate.py` catches ungrounded values; most traps below are grounded
 but wrong, so only `score.py` (gold comparison) catches them.
 
