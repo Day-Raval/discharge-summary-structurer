@@ -26,7 +26,7 @@ You extract. A script judges. Every fact you output carries `evidence`: words co
 6. **Repair loop (at most 3 validation runs in total).**
    - `"valid": true` → go to step 7.
    - Otherwise, fix **only** the paths listed in `errors`. Don't touch anything else, even if you'd now word it differently. Run the validator again.
-   - If the **third** run still fails, then for each failing path: set that field to `null` (or delete that list item), and add one `needs_review` entry that a person can act on without the old JSON: the field name without a list index, what was removed, and the validator's message. For example `"secondary_diagnoses: removed 'Asthma' (evidence 'history of asthma'): is not a verbatim quote from the note"` or `"discharge_date: set to null (was '2026-10-02'): is before admission_date"`. Run the validator one last time; it must pass.
+   - If the **third** run still fails, then for each failing path: set that field to `null` (or delete that list item), and add one `needs_review` entry that a person can act on without the old JSON: the field name without a list index, what was removed (with its evidence as first extracted), and the validator's message. For example `"secondary_diagnoses: removed 'Asthma' (evidence 'history of asthma'): is not a verbatim quote from the note"` or `"discharge_date: set to null (was '2026-10-02'): is before admission_date"`. Run the validator one last time; it must pass. This final check is run 4 and counts in the reported total.
 
 7. **Reply** in the output format below. Delete the working files afterwards unless the user asked to keep them.
 
