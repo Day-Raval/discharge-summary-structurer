@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Structured discharge summary",
+  "description": "Every fact carries `evidence`: a verbatim quote from the note. A field the note does not state is null (or an empty list), never guessed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["admission_date", "discharge_date", "principal_diagnosis", "secondary_diagnoses", "procedures",
+               "allergies", "discharge_medications", "follow_up", "pending_results", "discharge_disposition", "needs_review"],
+  "$defs": {
+    "evidence": {"type": ["string", "null"], "minLength": 3},
+    "date_fact": {
+      "type": "object", "additionalProperties": false, "required": ["value", "evidence"],
+      "properties": {
+        "value": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "text_fact": {
+      "type": "object", "additionalProperties": false, "required": ["value", "evidence"],
+      "properties": {
+        "value": {"type": ["string", "null"], "minLength": 1},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "text_item": {
+      "type": "object", "additionalProperties": false, "required": ["value", "evidence"],
+      "properties": {
+        "value": {"type": "string", "minLength": 1},
+        "evidence": {"type": "string", "minLength": 3}
+      }
+    }
+  },
+  "properties": {
+    "admission_date": {"$ref": "#/$defs/date_fact"},
+    "discharge_date": {"$ref": "#/$defs/date_fact"},
+    "principal_diagnosis": {"$ref": "#/$defs/text_fact"},
+    "secondary_diagnoses": {"type": "array", "items": {"$ref": "#/$defs/text_item"}},
+    "procedures": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["value", "date", "evidence"],
+        "properties": {
+          "value": {"type": "string", "minLength": 1},
+          "date": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "evidence": {"type": "string", "minLength": 3}
+        }
+      }
+    },
+    "allergies": {
+      "type": "object", "additionalProperties": false, "required": ["status", "items", "evidence"],
+      "properties": {
+        "status": {"enum": ["documented", "nkda", "not_documented"]},
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["value", "reaction", "evidence"],
+            "properties": {
+              "value": {"type": "string", "minLength": 1},
+              "reaction": {"type": ["string", "null"]},
+              "evidence": {"type": "string", "minLength": 3}
+            }
+          }
+        },
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "discharge_medications": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["name", "dose", "route", "frequency", "status", "evidence"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "dose": {"type": ["string", "null"]},
+          "route": {"type": ["string", "null"]},
+          "frequency": {"type": ["string", "null"]},
+          "status": {"enum": ["new", "changed", "continued", "stopped"]},
+          "evidence": {"type": "string", "minLength": 3}
+        }
+      }
+    },
+    "follow_up": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["with", "timeframe", "evidence"],
+        "properties": {
+          "with": {"type": "string", "minLength": 1},
+          "timeframe": {"type": ["string", "null"]},
+          "evidence": {"type": "string", "minLength": 3}
+        }
+      }
+    },
+    "pending_results": {"type": "array", "items": {"$ref": "#/$defs/text_item"}},
+    "discharge_disposition": {
+      "type": "object", "additionalProperties": false, "required": ["value", "evidence"],
+      "properties": {
+        "value": {"enum": ["home", "home_with_services", "skilled_nursing", "rehab", "hospice", "left_ama", "other", null]},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "needs_review": {"type": "array", "items": {"type": "string"}}
+  }
+}
