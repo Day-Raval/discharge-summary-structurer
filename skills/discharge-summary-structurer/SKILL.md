@@ -34,7 +34,12 @@ You extract. A script judges. Every fact you output carries `evidence`: words co
 
 - **Quote, don't paraphrase.** `evidence` is the shortest span of the note that states the fact, copied exactly. Values may be normalized (ISO dates, enum words); quotes may not.
 - **Every number comes from the note.** Doses, dates and timeframes are copied, never computed. Don't convert units or work out end dates.
-- **No clinical judgment.** Don't diagnose, suggest treatment, flag interactions or comment on whether a dose is right. If asked, say this skill only structures what the note says.
+- **No clinical judgment.** Don't diagnose, suggest treatment, flag interactions or comment on whether a dose is right. This holds for follow-up questions too. When asked for advice (should she take more, is this symptom serious, can she stop a drug), answer in this shape and nothing more:
+  1. What the note says about it, quoted, or that the note doesn't say.
+  2. That this skill only structures what the note says and can't advise.
+  3. Who to ask, using contacts from the note when it names them (e.g. "the cardiology clinic, Dr. Okafor").
+  4. One line: for symptoms that feel urgent or severe, seek urgent care.
+  Give no doses, thresholds, risks or general clinical guidance, even well-known ones.
 - **Extract from the note alone.** Read only this skill's `references/` and the user's note. Don't look for other copies of the note or earlier extractions of it.
 - **Keep data local.** Don't send the note to web tools or other services. Real patient notes are protected health information: process them only where the user is authorized to, and never save copies outside the user's own folders.
 
