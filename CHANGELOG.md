@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (2026-10-20)
+- Directory submission fixes: removed the blanket `* text=auto` rule from `.gitattributes`, added the plugin icon, privacy policy and documentation links.
+- README privacy section now describes working files, where they are processed, and platform retention.
+
 ## 1.0.0 (2026-10-20)
 - First public release.
 - `references/schema.json` (JSON Schema draft 2020-12): 11 fields, every fact with a verbatim `evidence` quote.
