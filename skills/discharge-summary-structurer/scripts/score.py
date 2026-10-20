@@ -147,8 +147,13 @@ def main(argv=None):
 
     total, all_misses, per_file = defaultdict(lambda: [0, 0, 0]), [], []
     for gold_path, ext_path in zip(args.files[::2], args.files[1::2]):
-        gold = json.loads(Path(gold_path).read_text(encoding="utf-8"))
-        ext = json.loads(Path(ext_path).read_text(encoding="utf-8"))
+        try:
+            gold = json.loads(Path(gold_path).read_text(encoding="utf-8"))
+            ext = json.loads(Path(ext_path).read_text(encoding="utf-8"))
+        except FileNotFoundError as e:
+            p.error(f"file not found: {e.filename}")
+        except json.JSONDecodeError as e:
+            p.error(f"{ext_path} is not valid JSON ({e}); copy only the JSON block from the skill's reply")
         counts, misses = score_pair(gold, ext)
         tp, fp, fn = (sum(c[i] for c in counts.values()) for i in range(3))
         per_file.append({"gold": Path(gold_path).name, "extraction": Path(ext_path).name,
