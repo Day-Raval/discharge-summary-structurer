@@ -105,8 +105,9 @@ def check_note(data, note, errors):
     for i, med in enumerate(data.get("discharge_medications") or []):
         dose, ev = med.get("dose"), med.get("evidence")
         if isinstance(dose, str) and isinstance(ev, str):
+            quoted = set(re.findall(r"\d+(?:\.\d+)?", ev))  # whole numbers, so "4" doesn't match inside "40"
             for num in re.findall(r"\d+(?:\.\d+)?", dose):
-                if num not in ev:
+                if num not in quoted:
                     errors.append((f"discharge_medications[{i}].dose", f"dose number {num} is not in its evidence quote"))
 
 

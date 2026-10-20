@@ -85,6 +85,9 @@ def test_grounding_errors():
            "discharge_medications[1]: value 'Glipizide' is not supported")
     # dose changed from the note
     expect(lambda d: d["discharge_medications"][0].update(dose="500 mg"), "dose number 500 is not in its evidence")
+    # a number hidden inside a bigger one doesn't count: "75" is not in "750", "5" is not in "500"
+    expect(lambda d: d["discharge_medications"][0].update(dose="75 mg"), "dose number 75 is not in its evidence")
+    expect(lambda d: d["discharge_medications"][1].update(dose="5 mg"), "dose number 5 is not in its evidence")
     # line breaks and case differences in a quote are fine
     assert errors_for(lambda d: d["principal_diagnosis"].update(
         evidence="principal diagnosis:\n community-acquired   pneumonia")) == []
