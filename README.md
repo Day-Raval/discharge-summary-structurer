@@ -57,19 +57,15 @@ Quotes are matched ignoring case and line breaks. The hard cases (stopped versus
 
 Works in Claude Code, Claude.ai, OpenAI Codex, Gemini CLI, Cursor and GitHub Copilot. The skill uses the open SKILL.md format, so any compatible agent can load it.
 
-**Any agent (recommended)**: clone the repo and run the installer. It detects which agents you have and copies the skill into each one's skills folder.
-```
-git clone https://github.com/Day-Raval/discharge-summary-structurer.git
-cd discharge-summary-structurer
-./install.sh              # agents detected on this machine
-./install.sh --all        # all five
-./install.sh codex gemini # only these
-./install.sh --project    # into ./.agents/skills and ./.claude/skills of the current repo
-./install.sh --uninstall
-```
-On Windows with WSL, install into your Windows home folder so Windows-native agents can find the skill: `HOME=/mnt/c/Users/<you> ./install.sh`
+**Any agent (manual install)**:
 
-| Agent | Skills folder the installer uses |
+1. On the [repository page](https://github.com/Day-Raval/discharge-summary-structurer), choose **Code > Download ZIP** and extract it.
+2. Copy the entire `skills/discharge-summary-structurer/` folder into your agent's skills folder below. Keep its name and contents together.
+3. Start a new chat in the agent.
+
+On Windows, `~` means your Windows user folder (for example, `C:\Users\<you>`).
+
+| Agent | Skills folder |
 |---|---|
 | Claude Code | `~/.claude/skills/` |
 | OpenAI Codex | `~/.agents/skills/` |
