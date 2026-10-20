@@ -16,7 +16,7 @@ Read these before extracting. When a case isn't covered, prefer `null` over a gu
 
 ## Diagnoses
 
-- `principal_diagnosis`: the one the note labels principal, primary or main. If none is labeled, use `null`; don't pick one.
+- `principal_diagnosis`: the one the note labels principal, primary or main, or a single diagnosis the note sets apart from the rest (e.g. "Diagnosis:" above "Other active problems:"). If several diagnoses are listed with none set apart, use `null`; don't pick one.
 - `secondary_diagnoses`: other active or chronic problems the note lists for this stay.
 - **Leave out negated and excluded diagnoses**: "ruled out", "excluded", "no evidence of", "considered but". They are not diagnoses.
 - Keep the note's wording for the value; trim lead-ins like "1." or "Principal diagnosis:".
