@@ -1,0 +1,13 @@
+DISCHARGE SUMMARY  (SYNTHETIC: fictional patient, for testing only)
+
+The patient was admitted on June 3, 2026 and discharged on June 9, 2026. The principal diagnosis was sepsis due to a right-sided pyelonephritis. Secondary diagnoses include type 2 diabetes mellitus with hyperglycemia and chronic obstructive pulmonary disease. Pneumonia was considered on admission but the chest X-ray was clear, so it was excluded.
+
+She reports allergies to sulfa drugs (rash) and codeine (nausea).
+
+A renal ultrasound on June 4, 2026 showed no hydronephrosis or abscess. She was treated with IV ceftriaxone and transitioned to oral therapy on day 4.
+
+At discharge she will take cefpodoxime 200 mg by mouth every 12 hours to complete 10 days total; this is a new medication. Her insulin glargine was changed from 20 units to 24 units subcutaneously at bedtime. She will continue tiotropium 18 mcg inhaled once daily. Glipizide was stopped because of low blood sugars during the stay.
+
+The final urine culture sensitivities were still pending at the time of discharge.
+
+She was discharged to a skilled nursing facility to finish antibiotics and for strength training, and should see her primary care physician within 7 days and urology in 4 weeks.

@@ -1,0 +1,21 @@
+DISCHARGE SUMMARY  (SYNTHETIC: fictional patient, for testing only)
+
+Admitted: 2026-08-09
+Discharged: 2026-08-13
+
+Diagnosis: Closed left femoral neck fracture after a mechanical fall.
+Other active problems: osteoporosis; atrial fibrillation, rate controlled.
+
+History: 81-year-old with a fall at home. Previously on warfarin, which was stopped in 2024 after a GI bleed; no anticoagulant at home since then.
+
+Procedure: Left hip hemiarthroplasty performed 2026-08-10, uncomplicated.
+
+Medications at discharge:
+  Enoxaparin 40 mg subcutaneous once daily for 28 days - new, for clot prevention
+  Oxycodone 5 mg by mouth every 6 hours as needed for pain - new
+  Metoprolol tartrate 25 mg by mouth twice daily - continue home medication
+  Alendronate 70 mg by mouth weekly - continue
+
+Follow up with orthopedic surgery.
+
+Discharged to an inpatient rehabilitation facility.

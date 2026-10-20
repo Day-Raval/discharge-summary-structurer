@@ -1,0 +1,36 @@
+DISCHARGE SUMMARY  (SYNTHETIC: fictional patient, for testing only)
+
+Admission Date: 09/14/2026
+Discharge Date: 09/18/2026
+
+PRINCIPAL DIAGNOSIS
+Acute on chronic systolic heart failure exacerbation.
+
+SECONDARY DIAGNOSES
+1. Hypertension
+2. Chronic kidney disease, stage 3a
+3. Acute myocardial infarction was ruled out with serial troponins.
+
+ALLERGIES: NKDA
+
+HOSPITAL COURSE
+Patient presented with 3 days of worsening dyspnea and leg swelling. Diuresed with IV furosemide with net negative 4.2 L. Serial troponins were negative x3. Echocardiogram on 09/15/2026 showed EF 30%. Home amlodipine was discontinued given low-normal blood pressures on the new regimen.
+
+PROCEDURES
+Transthoracic echocardiogram on 09/15/2026.
+
+DISCHARGE MEDICATIONS
+- Furosemide 40 mg PO daily (increased from home dose of 20 mg daily)
+- Sacubitril-valsartan 24-26 mg PO twice daily (NEW)
+- Carvedilol 6.25 mg PO twice daily (continue)
+- Amlodipine 5 mg: STOP
+
+FOLLOW-UP
+Cardiology clinic, Dr. Okafor, in 1 week.
+Primary care within 2 weeks for a repeat basic metabolic panel.
+
+PENDING AT DISCHARGE
+TSH sent 09/17, result pending.
+
+DISPOSITION
+Discharged home with home health nursing for daily weights.

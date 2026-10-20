@@ -1,0 +1,25 @@
+{
+  "admission_date": {"value": "2026-08-09", "evidence": "Admitted: 2026-08-09"},
+  "discharge_date": {"value": "2026-08-13", "evidence": "Discharged: 2026-08-13"},
+  "principal_diagnosis": {"value": "Closed left femoral neck fracture", "evidence": "Closed left femoral neck fracture after a mechanical fall."},
+  "secondary_diagnoses": [
+    {"value": "Osteoporosis", "evidence": "osteoporosis"},
+    {"value": "Atrial fibrillation, rate controlled", "evidence": "atrial fibrillation, rate controlled"}
+  ],
+  "procedures": [
+    {"value": "Left hip hemiarthroplasty", "date": "2026-08-10", "evidence": "Left hip hemiarthroplasty performed 2026-08-10"}
+  ],
+  "allergies": {"status": "not_documented", "items": [], "evidence": null},
+  "discharge_medications": [
+    {"name": "Enoxaparin", "dose": "40 mg", "route": "subcutaneous", "frequency": "once daily for 28 days", "status": "new", "evidence": "Enoxaparin 40 mg subcutaneous once daily for 28 days - new"},
+    {"name": "Oxycodone", "dose": "5 mg", "route": "by mouth", "frequency": "every 6 hours as needed for pain", "status": "new", "evidence": "Oxycodone 5 mg by mouth every 6 hours as needed for pain - new"},
+    {"name": "Metoprolol tartrate", "dose": "25 mg", "route": "by mouth", "frequency": "twice daily", "status": "continued", "evidence": "Metoprolol tartrate 25 mg by mouth twice daily - continue home medication"},
+    {"name": "Alendronate", "dose": "70 mg", "route": "by mouth", "frequency": "weekly", "status": "continued", "evidence": "Alendronate 70 mg by mouth weekly - continue"}
+  ],
+  "follow_up": [
+    {"with": "Orthopedic surgery", "timeframe": null, "evidence": "Follow up with orthopedic surgery."}
+  ],
+  "pending_results": [],
+  "discharge_disposition": {"value": "rehab", "evidence": "Discharged to an inpatient rehabilitation facility."},
+  "needs_review": []
+}

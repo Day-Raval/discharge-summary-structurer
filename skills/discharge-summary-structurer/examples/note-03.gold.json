@@ -1,0 +1,31 @@
+{
+  "admission_date": {"value": "2026-06-03", "evidence": "admitted on June 3, 2026"},
+  "discharge_date": {"value": "2026-06-09", "evidence": "discharged on June 9, 2026"},
+  "principal_diagnosis": {"value": "Sepsis due to right-sided pyelonephritis", "evidence": "The principal diagnosis was sepsis due to a right-sided pyelonephritis."},
+  "secondary_diagnoses": [
+    {"value": "Type 2 diabetes mellitus with hyperglycemia", "evidence": "type 2 diabetes mellitus with hyperglycemia"},
+    {"value": "Chronic obstructive pulmonary disease", "evidence": "chronic obstructive pulmonary disease"}
+  ],
+  "procedures": [
+    {"value": "Renal ultrasound", "date": "2026-06-04", "evidence": "A renal ultrasound on June 4, 2026"}
+  ],
+  "allergies": {"status": "documented", "evidence": "She reports allergies to sulfa drugs (rash) and codeine (nausea).", "items": [
+    {"value": "Sulfa drugs", "reaction": "rash", "evidence": "sulfa drugs (rash)"},
+    {"value": "Codeine", "reaction": "nausea", "evidence": "codeine (nausea)"}
+  ]},
+  "discharge_medications": [
+    {"name": "Cefpodoxime", "dose": "200 mg", "route": "by mouth", "frequency": "every 12 hours to complete 10 days total", "status": "new", "evidence": "cefpodoxime 200 mg by mouth every 12 hours to complete 10 days total; this is a new medication"},
+    {"name": "Insulin glargine", "dose": "24 units", "route": "subcutaneous", "frequency": "at bedtime", "status": "changed", "evidence": "Her insulin glargine was changed from 20 units to 24 units subcutaneously at bedtime."},
+    {"name": "Tiotropium", "dose": "18 mcg", "route": "inhaled", "frequency": "once daily", "status": "continued", "evidence": "She will continue tiotropium 18 mcg inhaled once daily."},
+    {"name": "Glipizide", "dose": null, "route": null, "frequency": null, "status": "stopped", "evidence": "Glipizide was stopped because of low blood sugars during the stay."}
+  ],
+  "follow_up": [
+    {"with": "Primary care physician", "timeframe": "within 7 days", "evidence": "should see her primary care physician within 7 days"},
+    {"with": "Urology", "timeframe": "4 weeks", "evidence": "urology in 4 weeks"}
+  ],
+  "pending_results": [
+    {"value": "Urine culture sensitivities", "evidence": "The final urine culture sensitivities were still pending at the time of discharge."}
+  ],
+  "discharge_disposition": {"value": "skilled_nursing", "evidence": "She was discharged to a skilled nursing facility"},
+  "needs_review": []
+}

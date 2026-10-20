@@ -1,0 +1,28 @@
+{
+  "admission_date": {"value": "2026-09-14", "evidence": "Admission Date: 09/14/2026"},
+  "discharge_date": {"value": "2026-09-18", "evidence": "Discharge Date: 09/18/2026"},
+  "principal_diagnosis": {"value": "Acute on chronic systolic heart failure exacerbation", "evidence": "Acute on chronic systolic heart failure exacerbation."},
+  "secondary_diagnoses": [
+    {"value": "Hypertension", "evidence": "1. Hypertension"},
+    {"value": "Chronic kidney disease, stage 3a", "evidence": "2. Chronic kidney disease, stage 3a"}
+  ],
+  "procedures": [
+    {"value": "Transthoracic echocardiogram", "date": "2026-09-15", "evidence": "Transthoracic echocardiogram on 09/15/2026."}
+  ],
+  "allergies": {"status": "nkda", "items": [], "evidence": "ALLERGIES: NKDA"},
+  "discharge_medications": [
+    {"name": "Furosemide", "dose": "40 mg", "route": "PO", "frequency": "daily", "status": "changed", "evidence": "Furosemide 40 mg PO daily (increased from home dose of 20 mg daily)"},
+    {"name": "Sacubitril-valsartan", "dose": "24-26 mg", "route": "PO", "frequency": "twice daily", "status": "new", "evidence": "Sacubitril-valsartan 24-26 mg PO twice daily (NEW)"},
+    {"name": "Carvedilol", "dose": "6.25 mg", "route": "PO", "frequency": "twice daily", "status": "continued", "evidence": "Carvedilol 6.25 mg PO twice daily (continue)"},
+    {"name": "Amlodipine", "dose": null, "route": null, "frequency": null, "status": "stopped", "evidence": "Amlodipine 5 mg: STOP"}
+  ],
+  "follow_up": [
+    {"with": "Cardiology clinic, Dr. Okafor", "timeframe": "1 week", "evidence": "Cardiology clinic, Dr. Okafor, in 1 week."},
+    {"with": "Primary care", "timeframe": "within 2 weeks", "evidence": "Primary care within 2 weeks for a repeat basic metabolic panel."}
+  ],
+  "pending_results": [
+    {"value": "TSH", "evidence": "TSH sent 09/17, result pending."}
+  ],
+  "discharge_disposition": {"value": "home_with_services", "evidence": "Discharged home with home health nursing for daily weights."},
+  "needs_review": []
+}
