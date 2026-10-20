@@ -1,6 +1,5 @@
 # Never commit real clinical notes: only synthetic examples are allowed
 *.txt
-!skills/discharge-summary-structurer/examples/*.txt
 !evals/**/*.txt
 __pycache__/
 *.pyc
