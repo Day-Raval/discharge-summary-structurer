@@ -125,7 +125,9 @@ Testing found and fixed 6 issues before release, 3 of them first flagged by the 
 ## Privacy and safety
 
 - **Synthetic data only in this repo.** Every note here is fictional. `.gitignore` excludes `*.txt` outside `evals/`, and CI fails if a note appears anywhere else. Never commit a real patient note.
-- **Local by design.** The scripts make no network calls and write no files except where you tell them. The skill has no MCP servers and tells the agent not to send the note to web tools.
+- **No additional services.** The bundled scripts make no network calls. The skill has no MCP servers or developer-operated backend receiving notes, and tells the agent not to send the note to web tools or other services.
+- **Working files.** The skill instructs the agent to save the supplied note and extracted JSON in working files for validation, then delete those files after replying unless the user asks to keep them. Files are processed in the chosen agent's execution environment, which may be local or hosted.
+- **Platform retention.** The chosen agent still processes the note and output. Chat messages, uploads, and returned outputs remain subject to that platform's privacy and retention settings and policies. Deleting working files does not delete the conversation or copies of the output.
 - **Real notes are protected health information.** Process them only in an environment you are authorized to use. The agent you run sees the note the same way it sees anything you paste.
 - **Not a clinical tool.** The skill structures what the note says. It does not diagnose, recommend treatment, check interactions or judge doses, and every output ends with a disclaimer saying so.
 
