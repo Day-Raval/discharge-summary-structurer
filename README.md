@@ -102,7 +102,7 @@ python3 skills/discharge-summary-structurer/scripts/validate.py note.txt extract
 
 ## Try it with sample data
 
-`evals/notes/` holds three synthetic discharge summaries, each with a hand-made gold extraction. They are written in three styles (sectioned, semi-structured and narrative prose) and plant 15 traps, listed in `evals/traps.md`: a negated diagnosis, a stopped home medication, a changed dose, an inpatient-only IV drug, a historical medication, NKDA versus no allergy line, a follow-up with no timeframe and more.
+`evals/notes/` holds three synthetic discharge summaries, each with a hand-made gold extraction. They are written in three styles (sectioned, semi-structured and narrative prose) and plant 16 traps, listed in `evals/traps.md`: a negated diagnosis, a stopped home medication, a changed dose, an inpatient-only IV drug, a historical medication, NKDA versus no allergy line, a follow-up with no timeframe and more.
 
 Paste a note into your agent, then score the result against its gold file:
 ```

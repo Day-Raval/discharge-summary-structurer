@@ -66,14 +66,14 @@ Checked by validate.py in {N} run(s); every fact above is quoted from the note.
 _Structured from the note by discharge-summary-structurer; not medical advice. Verify against the source before clinical use._
 ````
 
-The summary is built only from the validated JSON: nothing appears in it that isn't in the JSON. If the user asked for JSON only, give the JSON and the disclaimer line.
+The summary is built only from the validated JSON: nothing appears in it that isn't in the JSON. If you made a judgment call worth flagging (a field left out on purpose, a rule applied to an unclear case), add at most 3 short lines under **Notes:** after the JSON and **before** the disclaimer. Nothing comes after the disclaimer. If the user asked for JSON only, give the JSON and the disclaimer line.
 
 ## Before you reply, check
 
 1. The last validator run printed `"valid": true`.
 2. Every fact in the summary is in the JSON, and the JSON is exactly what passed validation.
 3. Medication changes are worded as the note words them; no added advice.
-4. The last line is exactly: _Structured from the note by discharge-summary-structurer; not medical advice. Verify against the source before clinical use._
+4. The last line is exactly: _Structured from the note by discharge-summary-structurer; not medical advice. Verify against the source before clinical use._ Any notes go above it.
 
 ## Files
 

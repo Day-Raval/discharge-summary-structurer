@@ -7,7 +7,8 @@
     {"value": "Chronic obstructive pulmonary disease", "evidence": "chronic obstructive pulmonary disease"}
   ],
   "procedures": [
-    {"value": "Renal ultrasound", "date": "2026-06-04", "evidence": "A renal ultrasound on June 4, 2026"}
+    {"value": "Renal ultrasound", "date": "2026-06-04", "evidence": "A renal ultrasound on June 4, 2026"},
+    {"value": "Chest X-ray", "date": null, "evidence": "the chest X-ray was clear"}
   ],
   "allergies": {"status": "documented", "evidence": "She reports allergies to sulfa drugs (rash) and codeine (nausea).", "items": [
     {"value": "Sulfa drugs", "reaction": "rash", "evidence": "sulfa drugs (rash)"},

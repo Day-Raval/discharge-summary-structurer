@@ -22,3 +22,4 @@ but wrong, so only `score.py` (gold comparison) catches them.
 | 03 | Inpatient-only drug: IV ceftriaxone | Listed as a discharge med | Not listed |
 | 03 | Dose changed in prose: insulin glargine 20 to 24 units | Dose 20 units | `changed`, dose 24 units |
 | 03 | Two allergies with reactions in one sentence | One allergy, or reactions dropped | Two items, each with its reaction |
+| 03 | Imaging mentioned in passing: "the chest X-ray was clear" | Left out because it isn't in a procedures list | Listed as a procedure, date null |
