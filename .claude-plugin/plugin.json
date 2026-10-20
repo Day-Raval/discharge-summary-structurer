@@ -1,0 +1,22 @@
+{
+  "name": "discharge-summary-structurer",
+  "displayName": "Discharge Summary Structurer",
+  "version": "1.0.0",
+  "description": "Turns a hospital discharge summary into structured JSON (dates, diagnoses, procedures, allergies, discharge medications with new/changed/continued/stopped status, follow-ups, pending results, disposition). Every fact carries a verbatim quote that a bundled script checks against the note; the model repairs only what fails, up to 3 tries.",
+  "author": {
+    "name": "Dayesh Raval"
+  },
+  "homepage": "https://github.com/Day-Raval/discharge-summary-structurer",
+  "repository": "https://github.com/Day-Raval/discharge-summary-structurer",
+  "license": "MIT",
+  "keywords": [
+    "healthcare",
+    "clinical-notes",
+    "extraction",
+    "json-schema",
+    "provenance"
+  ],
+  "privacyPolicyUrl": "https://github.com/Day-Raval/discharge-summary-structurer#privacy-and-safety",
+  "supportUrl": "https://github.com/Day-Raval/discharge-summary-structurer/issues",
+  "documentationUrl": "https://github.com/Day-Raval/discharge-summary-structurer#readme"
+}

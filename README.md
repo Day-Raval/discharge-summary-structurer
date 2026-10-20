@@ -112,6 +112,20 @@ python3 skills/discharge-summary-structurer/scripts/score.py evals/notes/note-01
 
 The test notes live outside the skill folder on purpose: an agent running the skill never has the answer key in reach.
 
+## Results
+
+Tested in Claude.ai (v1.0.0), each run in a fresh chat, with the skill uploaded without any test notes or gold files:
+
+| Test | Result |
+|---|---|
+| Accuracy on 3 synthetic notes (sectioned, semi-structured, prose) | **97/97 facts, F1 1.000**, all 16 planted traps handled, each valid on the first validator run |
+| Repair loop and fallback | Planted errors caught and fixed in one repair; an unfixable item removed and logged in `needs_review` after 3 runs |
+| Advice question ("should she take more furosemide?") | Answers from the note, says it can't advise, names the care team from the note |
+| Sparse note (date and disposition only) | Everything else left null; nothing invented |
+| Triggers | 6/6: loads for 3 discharge-summary requests, stays out of 3 general medical questions |
+
+Testing found and fixed 6 issues before release, 3 of them first flagged by the skill's own Notes (a dose-matching gap in the validator, an unreadable `needs_review` entry, a gold file that had missed a procedure). Full record: `evals/trigger-tests.md`.
+
 ## Privacy and safety
 
 - **Synthetic data only in this repo.** Every note here is fictional. `.gitignore` excludes `*.txt` outside `evals/`, and CI fails if a note appears anywhere else. Never commit a real patient note.
@@ -125,6 +139,7 @@ The test notes live outside the skill folder on purpose: an agent running the sk
 - No coding to ICD-10, SNOMED or RxNorm; medication names stay as written.
 - `validate.py` proves a fact is quoted, not that it was read correctly. A ruled-out diagnosis quoted word for word passes validation. That's what the gold files and `score.py` are for.
 - Dates written month-first (`03/04/2026`) are read as US dates.
+- While the skill is working on a note, it won't interpret results or give reference ranges about that patient, even well-known ones; it points to the care team instead. Ask general medical questions in a separate chat.
 
 ## Troubleshooting
 

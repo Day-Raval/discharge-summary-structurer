@@ -1,0 +1,14 @@
+{
+  "name": "discharge-summary-structurer",
+  "description": "Discharge Summary Structurer by Dayesh Raval: quote-checked, schema-validated discharge summary extraction.",
+  "owner": {
+    "name": "Dayesh Raval"
+  },
+  "plugins": [
+    {
+      "name": "discharge-summary-structurer",
+      "source": "./",
+      "description": "Discharge summary to structured JSON, with every fact quoted from the note and checked by a script."
+    }
+  ]
+}

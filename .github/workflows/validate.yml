@@ -1,0 +1,50 @@
+name: validate
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Validator tests
+        run: python skills/discharge-summary-structurer/scripts/test_validate.py
+      - name: Scorer tests
+        run: python evals/test_score.py
+      - name: Gold files pass the validator and score perfectly against themselves
+        run: |
+          for i in 1 2 3; do
+            python skills/discharge-summary-structurer/scripts/validate.py evals/notes/note-0$i.txt evals/notes/note-0$i.gold.json
+          done
+          python skills/discharge-summary-structurer/scripts/score.py \
+            evals/notes/note-01.gold.json evals/notes/note-01.gold.json \
+            evals/notes/note-02.gold.json evals/notes/note-02.gold.json \
+            evals/notes/note-03.gold.json evals/notes/note-03.gold.json --min-f1 1.0
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: Validate plugin and marketplace
+        run: claude plugin validate .
+      - name: No clinical notes outside evals/notes
+        run: |
+          bad=$(git ls-files '*.txt' '*.TXT' | grep -v '^evals/notes/note-0[0-9]\.txt$' || true)
+          if [ -n "$bad" ]; then echo "Only synthetic notes in evals/notes/ may be committed:"; echo "$bad"; exit 1; fi
+      - name: No test data inside the skill folder
+        run: |
+          leak=$(git ls-files 'skills/discharge-summary-structurer/**' | grep -E '\.(txt|gold\.json)$' || true)
+          if [ -n "$leak" ]; then echo "Test notes or gold files must stay out of the skill folder:"; echo "$leak"; exit 1; fi
+      - name: Installer puts the skill in all 5 agents
+        run: |
+          H=$(mktemp -d)
+          HOME=$H ./install.sh --all
+          test "$(find $H -name SKILL.md | wc -l)" -eq 5

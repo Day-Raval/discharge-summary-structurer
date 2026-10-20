@@ -1,4 +1,4 @@
-# Never commit real clinical notes: only synthetic examples are allowed
+# Never commit real clinical notes: only synthetic test notes in evals/ are allowed
 *.txt
 !evals/**/*.txt
 __pycache__/
