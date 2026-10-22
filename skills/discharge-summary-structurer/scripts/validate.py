@@ -90,6 +90,9 @@ def key_words(text):
 def check_note(data, note, errors):
     note_s = squash(note)
     for path, value, evidence in facts(data):
+        if value is not None and not (path == "allergies" and value == "not_documented"):
+            if not isinstance(evidence, str) or not squash(evidence):
+                errors.append((f"{path}.evidence", "must contain a quote when a fact is present"))
         if isinstance(evidence, str) and squash(evidence) not in note_s:
             errors.append((f"{path}.evidence", "is not a verbatim quote from the note; copy the exact words"))
         if value is None and evidence not in (None, ""):
@@ -109,6 +112,17 @@ def check_note(data, note, errors):
             for num in re.findall(r"\d+(?:\.\d+)?", dose):
                 if num not in quoted:
                     errors.append((f"discharge_medications[{i}].dose", f"dose number {num} is not in its evidence quote"))
+            quoted_units = set(re.findall(r"[^\W\d_]+", ev.lower()))
+            for unit in re.findall(r"[^\W\d_]+", dose.lower()):
+                if unit not in quoted_units:
+                    errors.append((f"discharge_medications[{i}].dose", f"dose unit {unit!r} is not in its evidence quote"))
+    for i, follow in enumerate(data.get("follow_up") or []):
+        timeframe = follow.get("timeframe")
+        if isinstance(timeframe, str):
+            quoted = set(re.findall(r"\d+(?:\.\d+)?", follow["evidence"]))
+            for num in re.findall(r"\d+(?:\.\d+)?", timeframe):
+                if num not in quoted:
+                    errors.append((f"follow_up[{i}].timeframe", f"timeframe number {num} is not in its evidence quote"))
 
 
 def check_consistency(data, errors):
@@ -130,6 +144,11 @@ def check_consistency(data, errors):
         errors.append(("allergies.status", f"is {status} but allergies are listed"))
     if status == "not_documented" and allergies.get("evidence"):
         errors.append(("allergies.evidence", "must be null when status is not_documented"))
+    for i, med in enumerate(data.get("discharge_medications") or []):
+        if med["status"] == "stopped":
+            for field in ("dose", "route", "frequency"):
+                if med[field] is not None:
+                    errors.append((f"discharge_medications[{i}].{field}", "must be null when status is stopped"))
 
 
 def validate(note, data, schema):

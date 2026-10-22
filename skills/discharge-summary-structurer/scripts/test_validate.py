@@ -100,6 +100,40 @@ def test_consistency_errors():
     expect(lambda d: d["principal_diagnosis"].update(value=None), "principal_diagnosis.evidence: must be null")
 
 
+def test_required_evidence():
+    for key in ("admission_date", "discharge_date", "principal_diagnosis", "discharge_disposition"):
+        for evidence in (None, "   "):
+            expect(lambda d: d[key].update(evidence=evidence), f"{key}.evidence: must contain a quote")
+        assert errors_for(lambda d: d[key].update(value=None, evidence=None)) == []
+    expect(lambda d: d["allergies"].update(evidence=None), "allergies.evidence: must contain a quote")
+    expect(lambda d: d["allergies"].update(status="nkda", items=[], evidence=None),
+           "allergies.evidence: must contain a quote")
+    assert errors_for(lambda d: d["allergies"].update(status="not_documented", items=[], evidence=None)) == []
+    expect(lambda d: d["pending_results"][0].update(evidence="   "),
+           "pending_results[0].evidence: must contain a quote")
+
+
+def test_dose_units_and_timeframe_numbers():
+    for dose in ("750 g", "750 mcg", "750 mg/kg"):
+        expect(lambda d: d["discharge_medications"][0].update(dose=dose),
+               "discharge_medications[0].dose: dose unit")
+    assert errors_for(lambda d: d["discharge_medications"][0].update(dose="750MG")) == []
+    for timeframe in ("99 years", "11 weeks", "1.5 weeks"):
+        expect(lambda d: d["follow_up"][0].update(timeframe=timeframe),
+               "follow_up[0].timeframe: timeframe number")
+    assert errors_for(lambda d: d["follow_up"][0].update(timeframe=None)) == []
+
+
+def test_stopped_medication_attributes():
+    for field, value in (("dose", "750 mg"), ("route", "PO"), ("frequency", "daily")):
+        expect(lambda d: d["discharge_medications"][2].update({field: value}),
+               f"discharge_medications[2].{field}: must be null when status is stopped")
+    expect(lambda d: d["discharge_medications"][0].update(status="stopped"),
+           "discharge_medications[0].dose: must be null when status is stopped",
+           "discharge_medications[0].route: must be null when status is stopped",
+           "discharge_medications[0].frequency: must be null when status is stopped")
+
+
 def test_cli():
     import contextlib, io, tempfile
     with tempfile.TemporaryDirectory() as tmp:
@@ -109,6 +143,16 @@ def test_cli():
         with contextlib.redirect_stdout(io.StringIO()) as out:
             code = validate.main([str(note), str(ext)])
         assert code == 0 and json.loads(out.getvalue())["valid"] is True
+        data = copy.deepcopy(GOOD)
+        data["principal_diagnosis"].update(evidence=None)
+        ext.write_text(json.dumps(data), encoding="utf-8")
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            code = validate.main([str(note), str(ext)])
+        result = json.loads(out.getvalue())
+        assert code == 1 and result["valid"] is False and result["error_count"] == 1
+        assert set(result) == {"valid", "error_count", "errors"}
+        assert result["errors"][0]["path"] == "principal_diagnosis.evidence"
+        assert set(result["errors"][0]) == {"path", "message"}
         ext.write_text("{not json", encoding="utf-8")
         with contextlib.redirect_stdout(io.StringIO()) as out:
             code = validate.main([str(note), str(ext)])
